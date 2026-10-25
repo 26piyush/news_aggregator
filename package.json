@@ -1,0 +1,39 @@
+{
+  "name": "ai-news-aggregator-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production-oriented AI-Powered News Aggregator with MERN Stack, BERT NLP, PostgreSQL, Supabase, and Redis",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n \"api,web,nlp\" -c \"blue.bold,magenta.bold,yellow.bold\" \"npm run dev:api\" \"npm run dev:web\" \"npm run dev:nlp\"",
+    "dev:node": "concurrently -k -n \"api,web\" -c \"blue.bold,magenta.bold\" \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "npm --workspace=apps/api run dev",
+    "dev:web": "npm --workspace=apps/web run dev",
+    "dev:nlp": "python -m uvicorn services.nlp.app.main:app --host 127.0.0.1 --port 8000",
+    "build": "npm run build --workspaces",
+    "build:api": "npm --workspace=apps/api run build",
+    "build:web": "npm --workspace=apps/web run build",
+    "test": "npm run test --workspaces",
+    "test:api": "npm --workspace=apps/api run test",
+    "test:web": "npm --workspace=apps/web run test",
+    "test:nlp": "python -m unittest services/nlp/tests/test_nlp.py",
+    "start": "npm --workspace=apps/api run start"
+  },
+  "keywords": [
+    "news-aggregator",
+    "nlp",
+    "bert",
+    "react",
+    "express",
+    "postgresql",
+    "redis",
+    "supabase"
+  ],
+  "author": "Antigravity Engineering",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  }
+}

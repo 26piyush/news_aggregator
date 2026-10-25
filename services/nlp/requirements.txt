@@ -1,0 +1,11 @@
+fastapi>=0.110.0
+uvicorn>=0.28.0
+pydantic>=2.6.0
+httpx>=0.27.0
+pytest>=8.0.0
+python-dotenv>=1.0.0
+# Note: transformers and torch can be optionally installed for full neural inference.
+# If torch/transformers are omitted or in a resource-constrained environment,
+# the service automatically switches to the documented rule-based linguistic analyzer.
+transformers>=4.38.0
+torch>=2.2.0
